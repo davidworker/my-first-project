@@ -1,0 +1,52 @@
+@import 'reset';
+
+.title {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    margin:auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+
+    th, td {
+        border: 1px solid #dedede;
+        padding: 10px;
+    }
+
+    th {
+        background: rgb(54, 54, 250);
+        color: #fff;
+    }
+
+    tbody tr:nth-child(even) {
+        background: #dedede;
+    }
+}
+
+.button {
+    padding: 10px 20px;
+    border: 0;
+    background: red;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.fn {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+@media print {
+    .fn {
+        display: none;
+    }
+}

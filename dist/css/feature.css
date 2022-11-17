@@ -1,0 +1,44 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+  max-width: 600px;
+  height: auto;
+  position: relative;
+  margin: auto;
+}
+
+.block {
+  width: 90%;
+  margin: 20px auto;
+  background: yellow;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+  .block {
+    background: blue;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .block {
+    background: red;
+  }
+}
+/*# sourceMappingURL=feature.css.map */
