@@ -316,12 +316,89 @@ a {
   margin-bottom: 0;
 }
 
+#mobile-menu-switch {
+  display: none;
+}
+
+#mobile-menu-switch:checked ~ .mobile-menu span {
+  background: red;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+#mobile-menu-switch:checked ~ .mobile-menu span:nth-child(2) {
+  visibility: hidden;
+}
+
+#mobile-menu-switch:checked ~ .mobile-menu span:first-child {
+  position: relative;
+  top: 10px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+#mobile-menu-switch:checked ~ .mobile-menu span:last-child {
+  position: relative;
+  top: -6px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+#mobile-menu-switch:checked + .header-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header-content {
+  position: relative;
+}
+
 @media screen and (max-width: 700px) {
   .mobile-menu {
     display: block;
   }
-  .header-menu {
+  #header .header-menu {
     display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: inherit;
+    width: 100%;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  #header .header-menu ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  #header .header-menu ul li {
+    margin-right: 0;
+    margin-top: 30px;
+  }
+  #header .header-menu ul li:last-child {
+    margin-bottom: 30px;
+  }
+  #join-form .join-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #join-form .join-content > div {
+    width: 100%;
+  }
+  #join-form .join-content .join-content-left {
+    border-right: unset;
+    padding-right: 0;
+  }
+  #join-form .join-content .join-content-right {
+    padding-left: 0;
   }
 }
 /*# sourceMappingURL=mobile.css.map */
