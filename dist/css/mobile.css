@@ -400,5 +400,23 @@ a {
   #join-form .join-content .join-content-right {
     padding-left: 0;
   }
+  .timeline::after {
+    left: 26px;
+  }
+  .timeline .item {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    min-height: 130px;
+  }
+  .timeline .item .circle {
+    margin-left: 16px;
+  }
+  .timeline .item .text {
+    left: 63px;
+  }
+  .timeline .item:nth-child(even) .text {
+    text-align: left;
+  }
 }
 /*# sourceMappingURL=mobile.css.map */

@@ -106,4 +106,29 @@
             }
         }
     }
+
+    .timeline {
+        &::after {
+            left: 26px;
+        }
+
+        .item {
+            justify-content: flex-start;
+            min-height: 130px;
+
+            .circle {
+                margin-left: 16px;
+            }
+
+            .text {
+                left: 63px;
+            }
+
+            &:nth-child(even) {
+                .text {
+                    text-align: left;
+                }
+            }
+        }
+    }
 }
