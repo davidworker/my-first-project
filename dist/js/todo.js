@@ -1,8 +1,9 @@
 let domItem = document.querySelector('#item');
 let addBtn = document.querySelector('#add-btn');
+let saveBtn = document.querySelector('#save-btn');
 
 let database = {
-    schema: 'aaa',
+    schema: '',
     data: [],
     insert: function(text) {
         database.data.push({
@@ -19,17 +20,57 @@ let database = {
     read() {
         let data = localStorage.getItem(database.schema);
         if (data) {
-            data = JSON.parse(data)
+            data = JSON.parse(data);
+        } else {
+            data = [];
         }
 
         database.data = data
     },
     delete: function(index) {
-
+        database.data.splice(index, 1);
     }
 }
 
-// database.schema = prompt('請輸入帳號');
+while (!database.schema) {
+    database.schema = prompt('請輸入帳號');
+}
+
+restore();
+
+function restore() {
+    let domItemList = document.querySelector('#item-list');
+    let html = '';
+
+    database.read();
+    database.data.forEach(function(item) {
+        html += genLi(item.text, item.checked);
+    });
+    
+    domItemList.innerHTML = html;
+}
+
+function genLi(text, status) {
+    let checked = status ? 'checked' : '';
+    return `<li>
+                <div class="status">
+                    <input type="checkbox" ${checked}>
+                </div>
+                <div class="text">
+                    ${text}
+                </div>
+                <div>
+                    <a href="#" class="delete">刪除</a>
+                </div>
+            </li>`;
+}
+
+// saveBtn.addEventListener('click', database.save);
+saveBtn.addEventListener('click', function() {
+    database.save();
+    alert('已儲存');
+})
+// saveBtn.addEventListener('click', database.save()); // Error
 
 
 domItem.addEventListener('keyup', function(e) {
@@ -71,14 +112,7 @@ function addItem(text) {
 
     let html = domItemList.innerHTML;
 
-    html += `<li>
-                <div class="status">
-                    <input type="checkbox">
-                </div>
-                <div class="text">
-                    ${text}
-                </div>
-            </li>`;
+    html += genLi(text);
     
     domItemList.innerHTML = html;
 
@@ -95,23 +129,31 @@ domItemList.addEventListener('click', function(e) {
 
     let isCheckbox = tag == 'INPUT';
     let isText = tag == 'DIV' && el.classList.contains('text');
+    let isDelete = tag == 'A' && el.classList.contains('delete');
 
-    if (isCheckbox || isText) {
+    if (isCheckbox || isText || isDelete) {
         while (el.tagName.toUpperCase() != 'LI') {
             el = el.parentNode;
         }
 
-        let domCheckbox = el.querySelector('div.status input');
-        if (el.classList.contains('active')) {
-            el.classList.remove('active');
-            domCheckbox.checked = false;
-        } else {
-            el.classList.add('active');
-            domCheckbox.checked = true;
-        }
-
         let index = liIndex(el);
-        database.update(index, domCheckbox.checked);
+
+        if (isDelete) {
+            database.delete(index);
+            let ul = el.parentNode;
+            ul.querySelector(`li:nth-child(${index+1})`).remove();
+        } else {
+            let domCheckbox = el.querySelector('div.status input');
+            if (el.classList.contains('active')) {
+                el.classList.remove('active');
+                domCheckbox.checked = false;
+            } else {
+                el.classList.add('active');
+                domCheckbox.checked = true;
+            }
+    
+            database.update(index, domCheckbox.checked);
+        }
     }
 });
 
