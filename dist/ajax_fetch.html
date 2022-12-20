@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax fetch</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <button id="btn">AJAX</button>
+    <button onclick="clickAlert();">Click</button>
+    <div id="response"></div>
+</body>
+    <script>
+        let btn = document.querySelector('#btn');
+        let response = document.querySelector('#response');
+
+
+        btn.addEventListener('click', doAjax);
+
+        function doAjax() {
+            let api = 'https://book.niceinfos.com/frontend/api/?action=sleep';
+
+
+            let data = 123;
+
+            fetch(api).then(function(response) {
+                return response.text();
+            }).then(function(data) {
+                response.innerHTML = data;
+                data = 456;
+                console.log(data);
+            });
+
+
+            // let request = new XMLHttpRequest();
+
+            // request.addEventListener('load', function() {
+            //     response.innerHTML = request.responseText;
+            // });
+
+            // request.open('GET', 'https://book.niceinfos.com/frontend/api/?action=sleep')
+            // request.send();
+        }
+
+        function clickAlert() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'You click me!',
+            })
+        }
+    </script>
+</html>
