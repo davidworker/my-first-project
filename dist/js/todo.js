@@ -1,18 +1,22 @@
 let domItem = document.querySelector('#item');
 let addBtn = document.querySelector('#add-btn');
 let saveBtn = document.querySelector('#save-btn');
+let autoSaveSwitch = document.querySelector('#auto-save-switch');
 
 let database = {
     schema: '',
+    isAutoSave: false,
     data: [],
     insert: function(text) {
         database.data.push({
             checked: false,
             text: text
         })
+        database.autoSave();
     },
     update: function(index, checked) {
         database.data[index].checked = checked;
+        database.autoSave();
     },
     save: function() {
         localStorage.setItem(database.schema, JSON.stringify(database.data));
@@ -29,6 +33,12 @@ let database = {
     },
     delete: function(index) {
         database.data.splice(index, 1);
+        database.autoSave();
+    },
+    autoSave() {
+        if (database.isAutoSave) {
+            database.save();
+        }
     }
 }
 
@@ -52,7 +62,8 @@ function restore() {
 
 function genLi(text, status) {
     let checked = status ? 'checked' : '';
-    return `<li>
+    let active = status ? 'active' : '';
+    return `<li class="${active}">
                 <div class="status">
                     <input type="checkbox" ${checked}>
                 </div>
@@ -64,6 +75,10 @@ function genLi(text, status) {
                 </div>
             </li>`;
 }
+
+autoSaveSwitch.addEventListener('click', function() {
+    database.isAutoSave = autoSaveSwitch.checked;
+});
 
 // saveBtn.addEventListener('click', database.save);
 saveBtn.addEventListener('click', function() {
