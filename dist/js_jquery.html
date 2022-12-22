@@ -8,6 +8,27 @@
     <script src="js/jquery-3.6.3.min.js"></script>
 </head>
 <body>
-    
+    <input type="text" id="account" value="aaaa">
+
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+    <div class="item">Item 5</div>
 </body>
+<script>
+    let account = $('#account'); // document.querySelector()
+    let items = $('.item'); // document.querySelectorAll()
+
+    // console.log(account.val());
+    // console.log(items.html());
+
+    items.each(function(index, item) {
+        console.log(item, index);
+        item = $(item);
+        console.log(item.html());
+    })
+</script>
+
+
 </html>
