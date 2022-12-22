@@ -3,8 +3,7 @@
 *::before {
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .container {
@@ -16,5 +15,4 @@
 
 a {
   text-decoration: none;
-}
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */

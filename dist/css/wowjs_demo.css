@@ -1,0 +1,39 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 600px;
+  height: auto;
+  position: relative;
+  margin: auto;
+}
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+  background: #dedede;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: 700;
+  position: relative;
+}
+
+.cube {
+  width: 150px;
+  height: 150px;
+  background: yellow;
+  position: absolute;
+}
+.cube.left {
+  left: 150px;
+}
+.cube.right {
+  right: 150px;
+}/*# sourceMappingURL=wowjs_demo.css.map */

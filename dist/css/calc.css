@@ -3,8 +3,7 @@
 *::before {
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .container {
@@ -17,9 +16,8 @@
 .calc-component {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: 'Nerko One', cursive;
+  font-family: "Nerko One", cursive;
 }
-
 .calc-component .response {
   background: #b36d3e;
   color: #fff;
@@ -29,17 +27,11 @@
   padding: 20px 10px;
   letter-spacing: 2px;
 }
-
 .calc-component .nums {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .calc-component .nums > div {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   background: #636363;
   color: #fff;
   font-size: 30px;
@@ -48,27 +40,20 @@
   border: 1px solid #000;
   border-right-width: 0;
   cursor: pointer;
-  -webkit-transition: 0.2s;
   transition: 0.2s;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
-
 .calc-component .nums > div:last-child {
   width: 80px;
-  -webkit-box-flex: unset;
-      -ms-flex: unset;
-          flex: unset;
+  flex: unset;
   background: #09a6b1;
   border-right-width: 1px;
 }
-
 .calc-component .nums > div:hover {
   border-right-width: 1px;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  transform: scale(1.1);
   background: rgba(153, 0, 255, 0.89);
-}
-/*# sourceMappingURL=calc.css.map */
+}/*# sourceMappingURL=calc.css.map */
